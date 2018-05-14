@@ -1,0 +1,30 @@
+apply plugin: 'java'
+
+group='com.ey'
+version='1.0'
+
+jar {
+    from {
+        (configurations.runtime).collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+	manifest {
+        attributes 'Implementation-Title': 'visits analyzer',  
+        	'Implementation-Version': version,
+        	'Main-Class': 'com.ey.va.Program'
+    }
+}
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+  testCompile 'junit:junit:4.12'
+  testCompile "org.mockito:mockito-core:1.+" 
+}
+
+javadoc {
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
+}

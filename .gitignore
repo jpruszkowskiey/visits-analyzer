@@ -1,0 +1,10 @@
+.classpath
+.gradle
+.project
+.settings
+.idea
+visits-analyzer.iml
+out
+build
+bin
+build
